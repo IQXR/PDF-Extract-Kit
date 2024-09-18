@@ -74,14 +74,14 @@ class MathDataset(Dataset):
         return image
 
 
-if __name__ == '__main__':
+def main(argvs):
     parser = argparse.ArgumentParser()
     parser.add_argument('--pdf', type=str)
     parser.add_argument('--output', type=str, default="output")
     parser.add_argument('--batch-size', type=int, default=128)
     parser.add_argument('--vis', action='store_true')
     parser.add_argument('--render', action='store_true')
-    args = parser.parse_args()
+    args = parser.parse_args(argvs)
     print(args)
     
     tz = pytz.timezone('Asia/Shanghai')
@@ -326,3 +326,7 @@ if __name__ == '__main__':
     end = time.time()
     print(now.strftime('%Y-%m-%d %H:%M:%S'))
     print('Finished! time cost:', int(end-start), 's')
+
+if __name__ == '__main__':
+    print("Calling script from command line")
+    main(sys.argv[1:])
